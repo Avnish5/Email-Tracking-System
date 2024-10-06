@@ -7,8 +7,6 @@ const app = new Hono()
 
 app.post('/send-email',async(c)=>{
     const{emails}=await c.req.json();
-    console.log(process.env.MAIL_USER)
-
     if(!emails) return c.json({error:'emails are required'});
 
     const trackingId=uuid();

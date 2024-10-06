@@ -23,7 +23,7 @@ const transporter =createTransport({
 
 export const sentEmail=async(emails:string[],trackingId:string)=>{
    
-    const trackingURL=`http://localhost:3000/track/track-mail/${trackingId}`;
+    const trackingURL=`${process.env.BASE_URL}/track/track-mail/${trackingId}`;
     const mailOptions={
     //    from: process.env.MAIL_USER,
        from:process.env.MAIL_USER,
@@ -40,7 +40,6 @@ export const sentEmail=async(emails:string[],trackingId:string)=>{
 
     try{
         let info=await transporter.sendMail(mailOptions)
-        console.log(info)
     }catch(error)
     {
         console.log(error)
